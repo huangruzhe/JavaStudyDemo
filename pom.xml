@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--指定了当前pom模型的版本,必须这样写，不可更改-->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--坐标信息，并未固定要求，但约定俗成，模块概念和idea有些类似，一个项目分为多个模块-->
+    <groupId>huangruzhe.study</groupId>
+    <artifactId>JavaStudyDemo</artifactId>
+
+    <!--1表示大版本号，0表示小版本号，
+    SNAPSHOT：快照，表示该版本正在开发中
+    release：稳定版本
+    beta：公测版，玩过游戏的都懂
+    alpha：内部测试版
+    GA：正式发布版-->
+    <version>1.0-SNAPSHOT</version>
+
+    <!--maven项目的打包方式，默认为jar，可供选择的有war、zip、pom-->
+    <packaging>jar</packaging>
+
+    <!--项目描述名-->
+    <name>Java学习工程</name>
+
+    <!--项目地址-->
+    <url></url>
+
+    <!--项目描述-->
+    <description>Java学习工程</description>
+
+    <!--开发人员的列表信息-->
+    <developers>
+        <developer>Jason Huang</developer>
+    </developers>
+
+    <!--许可证信息-->
+    <licenses></licenses>
+
+    <!--组织信息-->
+    <organization></organization>
+
+    <!--依赖项信息，依赖到的jar包-->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+<!--            <type></type>-->
+
+            <!--依赖的范围，表示本依赖应用于项目中的哪些阶段如下：
+            compile：默认值。表示该依赖在编译、测试、运行阶段都有效
+            provided：在编译和测试时有效，在运行时不会被加入
+            runtime：在测试和运行时有效
+            test：在测试范围内有效
+            system：在编译和测试时有效，与provided类似，不过要与本地系统相关联，可移植性差
+            import：在dependenceManagement中使用，表示导入别的项目的依赖到本项目中，关于本条请参看文末引用的别人的博客-->
+            <scope>test</scope>
+
+            <!--设置依赖是否可选，取值为true或false，默认是false，如果是false，则子项目必然继承父项目的依赖（不可选）
+            若为true，则子项目可以自己选择是否需要父项目的依赖，若需要就手动引入，若不需要就不引入-->
+            <optional>true</optional>
+
+            <!--排除依赖列表，如果a依赖b，b依赖c，那么默认的a依赖c，但是我a就是不想依赖c，则可以在这里排除掉c-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId/>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+        </dependency>
+    </dependencies>
+
+    <!--一般为了统一管理多个项目，让他们的依赖都具有相同的版本，在所有子模块中的依赖标签都不指定明确的版本号，
+    maven会自动向其父级查找，直到找到一个父模块拥有dependencyManagement标签，指定了所有依赖的版本号。
+    这就保证所有模块的依赖版本都来自于同一个父模块的dependencyManagement指定。-->
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId></groupId>-->
+<!--                <artifactId></artifactId>-->
+<!--                <version></version>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
+
+
+    <!--对构建项目的支持-->
+    <build>
+
+        <!--插件-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+
+                <!--表示该插件在什么时候执行-->
+                <executions>
+                    <execution>
+
+                        <!--表示在打包阶段之后执行本插件-->
+                        <phase>package</phase>
+
+                        <!--执行方式，一般是与java的启动参数类似，例如：run等-->
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--用来指定继承的父模块-->
+<!--    <parent></parent>-->
+
+    <!--多模块共同管理，一起编译-->
+<!--    <modules>-->
+<!--        <module>A</module>-->
+<!--        <module>B</module>-->
+<!--        <module>C</module>-->
+<!--    </modules>-->
+
+    <!--属性，可以指定变量，在其他地方用${junit.version}来代替4.10，如下所示-->
+    <properties>
+        <junit.version>4.10</junit.version>
+    </properties>
+
+</project>

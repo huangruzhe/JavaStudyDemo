@@ -1,11 +1,11 @@
-package thread;
+package huangruzhe.study.io.thread;
 
 /**
- * @description: 创建线程池
+ * @description: 创建守护线程
  * @author: Huangruzhe
  * @create: 2020-03-30 09:16
  */
-public class CreateThreadPool {
+public class CreateDaemonThread {
     public static void main(String[] args) {
         Thread daemonTread = new Thread();
 

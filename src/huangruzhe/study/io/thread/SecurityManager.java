@@ -1,4 +1,4 @@
-package thread;
+package huangruzhe.study.io.thread;
 
 /**
  * @description: 查看安全管理器
