@@ -124,7 +124,7 @@
 
     <!--属性，可以指定变量，在其他地方用${junit.version}来代替4.10，如下所示-->
     <properties>
-        <junit.version>4.10</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
 
 </project>
